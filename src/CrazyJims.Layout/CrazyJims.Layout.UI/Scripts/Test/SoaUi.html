@@ -1,0 +1,118 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <script src="../jquery-1.4.1.js" type="text/javascript"></script>
+
+  <link rel="stylesheet" href="qunit/qunit.css" type="text/css" media="screen" />
+  <script type="text/javascript" src="qunit/qunit.js"></script>
+  <script src="../underscore.js" type="text/javascript"></script>
+  <script src="../SoaUi/SoaUi.js" type="text/javascript"></script>
+  <script type="text/javascript">
+      $(document).ready(function () {
+
+          module("Column Matching Tests");
+
+          var keyColumnData = [
+                        { "Id": "62fb1893-a636-4b07-b99c-4fdb17480128", "Name": "Aberciser" },
+                        { "Id": "bc09dbd2-1ad8-452c-9dcf-c141be1ebafd", "Name": "Chopperator" },
+                        { "Id": "92c705da-44e9-423b-97ac-e179eda56816", "Name": "CleanMiester" }
+                    ];
+
+          var nextColumnData = [
+                        { "Id": "bc09dbd2-1ad8-452c-9dcf-c141be1ebafd", "Price": 12534.45, "DiscountPrice": 4.23 },
+                        { "Id": "62fb1893-a636-4b07-b99c-4fdb17480128", "Price": 23.43, "DiscountPrice": 5.23 },
+                    ];
+
+          test("matchColumns orders next column correctly", function () {
+              var results = SoaUi.matchColumns(keyColumnData, nextColumnData);
+
+              equals(results[0].Price, 23.43);
+              equals(results[0].DiscountPrice, 5.23);
+              equals(results[1].Price, 12534.45);
+              equals(results[1].DiscountPrice, 4.23);
+          });
+
+          test("matchColumns fills all proerties in missing rows", function () {
+              var result = SoaUi.matchColumns(keyColumnData, nextColumnData);
+
+              equals(result[2].Price, "Not Available");
+              equals(result[2].DiscountPrice, "Not Available");
+          });
+
+          test("matchColumns returns same number of rows as keyColumn", function () {
+              var expectedLength = keyColumnData.length;
+              var result = SoaUi.matchColumns(keyColumnData, nextColumnData);
+
+              equals(expectedLength, result.length);
+          });
+
+          module("Data Composition Internal Tests");
+
+          var keyData = [
+                        { "Id": "62fb1893-a636-4b07-b99c-4fdb17480128", "Name": "Aberciser" },
+                        { "Id": "bc09dbd2-1ad8-452c-9dcf-c141be1ebafd", "Name": "Chopperator" },
+                        { "Id": "92c705da-44e9-423b-97ac-e179eda56816", "Name": "CleanMiester" }
+                    ];
+
+          var valueData = [
+                        { "Id": "62fb1893-a636-4b07-b99c-4fdb17480128", "Price": 23.43, "DiscountPrice": 5.23 },
+                        { "Id": "bc09dbd2-1ad8-452c-9dcf-c141be1ebafd", "Price": 12534.45, "DiscountPrice": 4.23 },
+                        { "Id": "92c705da-44e9-423b-97ac-e179eda56816", "Price": 845.34, "DiscountPrice": 100.352 }
+                    ];
+
+          test("getMatchingItemOrPlaceholderItemById when array has multiple matching items throws exception", function () {
+              var nonUniquevalueData = [
+                        { "Id": "62fb1893-a636-4b07-b99c-4fdb17480128", "Price": 23.43, "DiscountPrice": 5.23 },
+                        { "Id": "bc09dbd2-1ad8-452c-9dcf-c141be1ebafd", "Price": 12534.45, "DiscountPrice": 4.23 },
+                        { "Id": "bc09dbd2-1ad8-452c-9dcf-c141be1ebafd", "Price": 12534.45, "DiscountPrice": 4.23 },
+                        { "Id": "92c705da-44e9-423b-97ac-e179eda56816", "Price": 845.34, "DiscountPrice": 100.352 }
+                    ];
+              raises(function () {
+                  var result = nonUniquevalueData.getMatchingItemOrPlaceholderItemById("bc09dbd2-1ad8-452c-9dcf-c141be1ebafd");
+              });
+          });
+
+          test("getMatchingItemOrPlaceholderItemById when item exists returns item", function () {
+              var result = valueData.getMatchingItemOrPlaceholderItemById("bc09dbd2-1ad8-452c-9dcf-c141be1ebafd");
+
+              equals(result.Id, "bc09dbd2-1ad8-452c-9dcf-c141be1ebafd");
+              equals(result.Price, 12534.45);
+          });
+
+          test("getMatchingItemOrPlaceholderItemById when item does not exist returns 'Not Available' for properties", function () {
+              var result = valueData.getMatchingItemOrPlaceholderItemById("00000000-0000-0000-0000-000000000000");
+
+              equals(result.Id, "00000000-0000-0000-0000-000000000000");
+              equals(result.Price, "Not Available");
+              equals(result.DiscountPrice, "Not Available");
+          });
+
+
+          module("Data Composition Tests");
+
+          test("composeData works", function () {
+
+              var composedArray = SoaUi.composeData(keyData, valueData);
+
+
+              equals(composedArray[0].Name, "Aberciser");
+              equals(composedArray[0].Price, 23.43);
+              equals(composedArray[1].Name, "Chopperator");
+              equals(composedArray[1].Price, 12534.45);
+              equals(composedArray[2].Name, "CleanMiester");
+              equals(composedArray[2].Price, 845.34);
+          });
+
+      });
+  </script>
+  
+</head>
+<body>
+ <h1 id="qunit-header">QUnit example</h1>
+ <h2 id="qunit-banner"></h2>
+ <div id="qunit-testrunner-toolbar"></div>
+ <h2 id="qunit-userAgent"></h2>
+ <ol id="qunit-tests"></ol>
+ <div id="qunit-fixture"></div>
+</body>
+</html>

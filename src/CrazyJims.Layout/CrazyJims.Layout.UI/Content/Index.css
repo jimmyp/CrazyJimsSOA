@@ -1,0 +1,29 @@
+﻿th
+{
+	background-color: Gray;
+}
+
+td 
+{
+	background-color: Silver
+}
+
+.productIdColumn
+{
+	width: 20em;
+}
+
+.productNameColumn
+{
+	width: 10em;
+}
+
+.productPriceColumn
+{
+	width: 10em;
+}
+
+#productNames
+{
+	float: left;
+}
