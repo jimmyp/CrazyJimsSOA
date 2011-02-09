@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B65D0455-AE1F-43CF-A65D-B58F1BEC94E3}</ProjectGuid>
+    <ProjectGuid>{B22E62B5-F72E-47ED-98A5-1D99E306591C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CrazyJims.Common</RootNamespace>
-    <AssemblyName>CrazyJims.Common</AssemblyName>
+    <RootNamespace>CrazyJims.Orders.Test</RootNamespace>
+    <AssemblyName>CrazyJims.Orders.Test</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,14 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="StructureMap">
-      <HintPath>..\..\..\lib\structuremap\StructureMap.dll</HintPath>
+    <Reference Include="NSubstitute">
+      <HintPath>..\..\lib\NSubstitute-0.9.0.1\NSubstitute.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\lib\nunit\net-2.0\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,12 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompositeTableColumn.cs" />
-    <Compile Include="ControllerFactory.cs" />
-    <Compile Include="Guard.cs" />
-    <Compile Include="ITemplateRepository.cs" />
+    <Compile Include="RouteTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TemplateRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CrazyJims.Orders\CrazyJims.Orders.csproj">
+      <Project>{D1F7774F-7B87-4C9A-AB52-032854B1FFDD}</Project>
+      <Name>CrazyJims.Orders</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

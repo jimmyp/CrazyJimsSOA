@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Web;
 using System.Web.Routing;
-using CrazyJims.Products.UI;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace CrazyJims.Layout.UI.Tests
+namespace CrazyJims.Orders.Test
 {
     [TestFixture]
     public class Route_Tests
@@ -17,11 +14,11 @@ namespace CrazyJims.Layout.UI.Tests
         [Test]
         public void Template_Controller_Maps_According_To_Convention()
         {
-            RouteCollection routes = new RouteCollection();
-            ProductsMvcApplication.RegisterRoutes(routes);
+            var routes = new RouteCollection();
+            OrdersMvcApplication.RegisterRoutes(routes);
 
-            TestHelper.AssertRoute(routes, "~/Template/SomeTemplate",
-                                   new {controller = "Template", action = "GetTemplate", templateName = "SomeTemplate"});
+            TestHelper.AssertRoute(routes, "~/PlaceOrder/FFCBB09D-EBAE-4261-875B-80798FEE6B81",
+                                   new { controller = "PlaceOrder", action = "Index", customerId = new Guid("FFCBB09D-EBAE-4261-875B-80798FEE6B81") });
         }
     }
 
@@ -41,7 +38,7 @@ namespace CrazyJims.Layout.UI.Tests
 
             foreach (PropertyValue property in GetProperties(expectations))
             {
-                Assert.IsTrue(  string.Equals(property.Value.ToString(), routeData.Values[property.Name].ToString(),StringComparison.OrdinalIgnoreCase), 
+                Assert.IsTrue(string.Equals(property.Value.ToString(), routeData.Values[property.Name].ToString(), StringComparison.OrdinalIgnoreCase),
                                 string.Format("Expected '{0}', not '{1}' for '{2}'.", property.Value, routeData.Values[property.Name], property.Name));
             }
         }

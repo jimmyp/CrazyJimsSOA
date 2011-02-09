@@ -5,7 +5,8 @@
 
 td 
 {
-	background-color: Silver
+	background-color: Silver;
+	height: 2em;
 }
 
 .productIdColumn
@@ -24,6 +25,11 @@ td
 }
 
 #productNames
+{
+	float: left;
+}
+
+#productPrices
 {
 	float: left;
 }

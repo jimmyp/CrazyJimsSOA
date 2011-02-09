@@ -18,7 +18,8 @@
         var catalougeProductPricesDataUrl = 'http://localhost/Pricing/GetAll';
 
         var catalougePlaceOrderTemplateUrl = '<%=GetTemplatePath("OrderService", "PlaceOrder") %>';
-        var catalougePlaceOrderDataUrl = 'http://localhost/Orders/PlaceOrder';
+        //ToDo: The end of this URL needs to be appended with the customerId somehow, probably from the view model
+        var catalougePlaceOrderDataUrl = 'http://localhost/Orders/PlaceOrder/099B0B31-AA9C-4FB3-81CC-45205D6D7B23';
         
         $(document).ready(function () {
             $("#productNames").setTemplateURL(catalougeProductNamesTemplateUrl);
@@ -48,7 +49,7 @@
                 dataType: "json",
                 success: function (data) {
                     var orderedData = SoaUi.matchColumns(keyColumnData, data);
-                    $("#productPrices").processTemplate(orderedData);
+                    $("#placeOrder").processTemplate(orderedData);
                 }
             });
         });

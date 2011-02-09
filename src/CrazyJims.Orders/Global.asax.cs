@@ -12,7 +12,7 @@ namespace CrazyJims.Orders
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
 
-    public class MvcApplication : System.Web.HttpApplication
+    public class OrdersMvcApplication : System.Web.HttpApplication
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
@@ -26,7 +26,7 @@ namespace CrazyJims.Orders
             routes.MapRoute(
                 "GetPlaceOrder",
                 "PlaceOrder/{customerId}",
-                new {controller = "PlaceOrder", action = "PlaceOrder"});
+                new {controller = "PlaceOrder", action = "Index"});
 
             routes.MapRoute(
                 "Default", // Route name

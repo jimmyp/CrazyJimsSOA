@@ -1,14 +1,20 @@
 ﻿<table>
   <tr>
-    <th class="placeOrderColumn"></th>
+    <th class="placeOrderColumn">
+		&nbsp;
+	</th>
   </tr>
 	{#foreach $T as placeOrder}
 	<tr>
-		<td class="placeOrderColumn">
-			{#if $T.placeOrder.canPlace == true} 
-				<input type="submit" value="Place Order" />
+		<td class="placeOrderColumn">	
+			{#if $T.placeOrder.CanPlaceOrder == true}
+				<form action="{$T.placeOrder.ActionUri}" method="post">
+                    <input type="hidden" name="productId" value="{$T.placeOrder.Id}" />
+                    <input type="text" name="quantity" />
+                    <input type="submit" value="Place Order" />
+                </form>
 			{#else} 
-				<p>Unavailable</p>
+				Unavailable
 			{#/if}			
 		</td>
 	</tr>

@@ -112,7 +112,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Content\Templates\CatalougePricing.tpl" />
+    <None Include="Content\Templates\CatalougePricing.tpl">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

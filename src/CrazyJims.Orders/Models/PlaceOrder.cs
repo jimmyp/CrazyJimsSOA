@@ -3,22 +3,18 @@ using CrazyJims.Common;
 
 namespace CrazyJims.Orders.Models
 {
-    public class PlaceOrder
+    public class PlaceOrder : CompositeTableColumn
     {
-        public Guid Guid { get; set; }
-        public bool CanPlaceOrder { get; set; }
+        public bool CanPlaceOrder { get; private set; }
+        public string ActionUri { get; private set; }
 
-        private PlaceOrder()
+        public PlaceOrder(Guid id, bool canOrder, Uri actionUri) : base(id)
         {
-            
-        }
-        public PlaceOrder(Guid guid, bool canOrder)
-        {
-            Guard.AgainstNullArguments(guid, "guid");
-            Guid = guid;
-
             Guard.AgainstNullArguments(canOrder, "canOrder");
             CanPlaceOrder = canOrder;
+
+            Guard.AgainstNullArguments(actionUri, "actionUri");
+            ActionUri = actionUri.ToString();
         }
     }
 }
