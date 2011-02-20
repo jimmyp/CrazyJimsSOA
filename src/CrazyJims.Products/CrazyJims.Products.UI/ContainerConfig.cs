@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using CrazyJims.Common;
+using CrazyJims.Products.UI.Controllers;
 using StructureMap;
 
 namespace CrazyJims.Products.UI
@@ -18,8 +19,6 @@ namespace CrazyJims.Products.UI
                                                          
                                                c.For<ITemplateRepository>().HttpContextScoped().Use<TemplateRepository>();
                                           });
-            
-            ObjectFactory.WhatDoIHave();
         }
     }
 }

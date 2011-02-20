@@ -31,7 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrazyJims.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="NSubstitute">
       <HintPath>..\..\..\lib\NSubstitute-0.9.0.1\NSubstitute.dll</HintPath>
     </Reference>
@@ -53,7 +52,6 @@
     <Compile Include="Container_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Route_Tests.cs" />
-    <Compile Include="Template_Controller_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CrazyJims.Products.UI\CrazyJims.Products.UI.csproj">
