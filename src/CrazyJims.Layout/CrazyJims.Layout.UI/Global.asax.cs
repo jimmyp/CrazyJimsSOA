@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -17,7 +16,7 @@ namespace CrazyJims.Layout.UI
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new {controller = "Home", action = "Index", id = UrlParameter.Optional} // Parameter defaults
+                new {controller = "Catalouge", action = "Index", id = UrlParameter.Optional} // Parameter defaults
                 );
         }
 

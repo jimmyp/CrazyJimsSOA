@@ -8,8 +8,8 @@
     <ProjectGuid>{B22E62B5-F72E-47ED-98A5-1D99E306591C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CrazyJims.Orders.Test</RootNamespace>
-    <AssemblyName>CrazyJims.Orders.Test</AssemblyName>
+    <RootNamespace>CrazyJims.Orders.UI.Test</RootNamespace>
+    <AssemblyName>CrazyJims.Orders.UI.Test</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NSubstitute">
-      <HintPath>..\..\lib\NSubstitute-0.9.0.1\NSubstitute.dll</HintPath>
+      <HintPath>..\..\..\lib\NSubstitute-0.9.0.1\NSubstitute.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>..\..\lib\nunit\net-2.0\nunit.framework.dll</HintPath>
+      <HintPath>..\..\..\lib\nunit\net-2.0\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,9 +51,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CrazyJims.Orders\CrazyJims.Orders.csproj">
+    <ProjectReference Include="..\CrazyJims.Orders.UI\CrazyJims.Orders.UI.csproj">
       <Project>{D1F7774F-7B87-4C9A-AB52-032854B1FFDD}</Project>
-      <Name>CrazyJims.Orders</Name>
+      <Name>CrazyJims.Orders.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
