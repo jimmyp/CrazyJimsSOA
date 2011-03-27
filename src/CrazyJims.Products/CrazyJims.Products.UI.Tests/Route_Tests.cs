@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 using System.Web;
 using System.Web.Routing;
 using CrazyJims.Products.UI;
@@ -18,7 +16,7 @@ namespace CrazyJims.Layout.UI.Tests
         public void Template_Controller_Maps_According_To_Convention()
         {
             RouteCollection routes = new RouteCollection();
-            ProductsMvcApplication.RegisterRoutes(routes);
+            MvcApplication.RegisterRoutes(routes);
 
             TestHelper.AssertRoute(routes, "~/Template/SomeTemplate",
                                    new {controller = "Template", action = "GetTemplate", templateName = "SomeTemplate"});
